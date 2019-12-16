@@ -1,35 +1,24 @@
 
 sudo yum update -y
 
-if [ ! -d /home/vagrant/wlp ] ; then 
-	unzip /vagrant/downloads/wlp*.zip
-fi
+sudo hostname www.webgoat.local
+sudo timedatectl set-timezone CET
 
-if [ ! -d /home/vagrant/soap ] ; then 
-	tar xzvf /vagrant/downloads/SoapUI*.tar.gz
-	mv /home/vagrant/Soap* /home/vagrant/soap
-fi
+sudo yum -y groups install "GNOME Desktop"
+sudo systemctl set-default graphical.target
+sudo systemctl isolate graphical.target
 
-if [ ! -d /home/vagrant/maven ] ; then 
-	tar xzvf /vagrant/downloads/apache-maven*.tar.gz
-	mv /home/vagrant/apache-maven* /home/vagrant/maven
-fi
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
 
-if [ ! -d /home/vagrant/eclipse ] ; then 
-	tar xzvf /vagrant/downloads/eclipse*.tar.gz
-fi
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
 
-#cat << EOF > Bureaublad/eclipse.desktop
-#[Desktop Entry]
-#Version=1.0
-#Name=Eclipse JDK 1.8
-#Comment=Eclipse
-#Exec=/home/vagrant/eclipse/eclipse
-#Icon=/home/vagrant/eclipse/icon.xpm
-#Terminal=false
-#Type=Application
-#Categories=Utility;Application;
-#EOF
+sudo yum -y install docker-ce docker-ce-cli containerd.io
 
+sudo usermod -aG docker vagrant
+sudo systemctl enable docker
+sudo systemctl start docker
 
-#ln -s /home/vagrant/eclipse/eclipse Bureaublad/eclipse
