@@ -9,6 +9,6 @@ docker run -dti \
 --env RESTRICTED_EXTENSIONS=".conf/" \
 --env PORT=8001 \
 --publish 8001:8001 \
---env BACKEND=http://12.0.0.1:8080 \
+--env BACKEND=http://10.0.2.15:8080 \
 --restart unless-stopped \
 franbuehler/modsecurity-crs-rp

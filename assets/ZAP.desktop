@@ -2,7 +2,6 @@
 Version=1.0
 Type=Application
 Terminal=true
-Exec=/home/vagrant/ZAP_2.8.1/zap.sh -dir test1
-# -configfile /home/vagrant/owaspzap.context
+Exec=/home/vagrant/ZAP_2.8.1/zap.sh -configfile /home/vagrant/owaspzapconfig.xml
 Name=OWASP Zed Attack Proxy
 Icon=/home/vagrant/ZAP_2.8.1/zap.ico

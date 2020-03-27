@@ -42,19 +42,3 @@ fi
 wget https://download.mozilla.org/?product=firefox-latest-ssl\&os=linux64 -O firefox.tar.bz2
 tar -xf firefox.tar.bz2
 
-# RUN OWASP WebGoat and WebWolf
-docker run -d -p 8080:8080 -p 9090:9090 -p 80:80 -e TZ=Europe/Amsterdam -name webgoat webgoat/goatandwolf
-
-# RUN OWASP CRS ModSecurity
-docker run -dti \
---name apachecrsrp \
---env PARANOIA=1 \
---env ANOMALYIN=5 \
---env ANOMALYOUT=5 \
---env ALLOWED_METHODS="GET POST" \
---env MAX_FILE_SIZE=5242880 \
---env RESTRICTED_EXTENSIONS=".conf/" \
---env PORT=8001 \
---publish 8001:8001 \
---env BACKEND=http://10.56.14.8:8080 \
-franbuehler/modsecurity-crs-rp

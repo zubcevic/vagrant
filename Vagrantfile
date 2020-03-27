@@ -5,12 +5,12 @@ Vagrant.configure("2") do |config|
   config.vm.box_version = "1905.1"
 
   config.vm.network "forwarded_port", guest: 9080, host: 9080
-  config.vm.network "private_network", ip: "12.0.0.1"
-  #config.vm.synced_folder ".", "/downloads"
+  #config.vm.network "private_network", ip: "12.0.0.12"
+  config.vm.synced_folder ".", "/downloads"
 
   # Provider-specific configuration so you can fine-tune various
   config.vm.provider "virtualbox" do |vb|
-	vb.name = "devbox_webgoat"
+	vb.name = "webgoat_training"
 	vb.memory = "4096"
 	vb.cpus = 2
   vb.gui = true
