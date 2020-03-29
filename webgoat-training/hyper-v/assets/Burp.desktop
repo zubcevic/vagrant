@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Burpsuite Proxy
+Icon=utilities-terminal
+Type=Application
+Terminal=true
+Exec=/home/vagrant/startburp.sh
