@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 	config.vm.box_version = "20.0.0"
 
   #config.vm.network "forwarded_port", guest: 8080, host: 8080
-  #config.vm.synced_folder ".", "/downloads", type:"smb"
+  config.vm.synced_folder ".", "/downloads", type:"smb", disabled:"true"
 
   # Provider-specific configuration so you can fine-tune various
   config.vm.provider "hyperv" do |hyper|
