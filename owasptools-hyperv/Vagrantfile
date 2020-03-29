@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+
+	config.vm.box = "owaspwebgoat/training"
+	config.vm.box_version = "20.0.0"
+
+  #config.vm.network "forwarded_port", guest: 8080, host: 8080
+  #config.vm.synced_folder ".", "/downloads", type:"smb"
+
+  # Provider-specific configuration so you can fine-tune various
+  config.vm.provider "hyperv" do |hyper|
+	hyper.vmname = "webgoat_training"
+	hyper.memory = "4096"
+	hyper.cpus = 2
+   end
+
+   config.vm.provision "shell", path: "provision.sh", privileged: false
+
+end
